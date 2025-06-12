@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>LISTAGEM DE PESSOAS</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>NOME</th>
+                <th>BANDA</th>
+                <th>CANTOR</th>
+                <th>MUSICA</th>
+            </tr>
+        </thead>
+        <tbody th:each="pes : ${pessoa}">
+            <tr>
+                <td th:text="${cli.id}"></td>
+                <td th:text="${pes.nome}"></td>
+                <td th:text="${pes.banda}"></td>
+                <td th:text="${pes.cantor}"></td>
+                <td th:text="${pes.musica}"></td>
+                <td><a th:href="${'/editar/' + pes.id}">Editar</a></td>
+                <td>
+                    <form th:action="${'/deletar/' + pes.id}" method="post">
+                        <input type="submit" value="Deletar">
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

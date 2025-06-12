@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>FORMULARIO</title>
+</head>
+<body>
+    <h1 th:text="${titulo}"></h1>
+    <form th:action="@{${link}}" method="POST" th:object="${cliente}">
+        Nome: <input type="text" th:field="*{nome}" ><br>
+        CPF: <input type="text" th:field="*{cpf}" ><br>
+        <input type="submit" th:value="${valor}">
+    </form>
+</body>
+</html>
