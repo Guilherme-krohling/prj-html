@@ -38,7 +38,7 @@
         public String editar(Model model, @PathVariable int id) {
             IndisponibilidadeService service = ctx.getBean(IndisponibilidadeService.class);
             Indisponibilidade antigo = service.buscarPorId(id);
-            model.addAttribute("Indisponibilidade", antigo);
+            model.addAttribute("indisponibilidade", antigo);
             model.addAttribute("titulo", "EDITAR INDISPONIBILIDADE");
             model.addAttribute("link", "/editar/" + id);
             model.addAttribute("valor", "Editar");
