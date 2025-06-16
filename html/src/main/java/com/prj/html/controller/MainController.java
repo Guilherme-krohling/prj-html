@@ -16,61 +16,66 @@ import com.prj.html.model.IndisponibilidadeService;
 
 @Controller
 public class MainController {
+
     @Autowired
     ApplicationContext ctx;
 
     @GetMapping("/")
-    public String landing(){
+    public String landing() {
         return "landing";
     }
 
+    @GetMapping("/sucesso")
+    public String sucesso() {
+        return "sucesso";
+    }
 
     @GetMapping("/formulario")
-    public String form(Model model){
-        model.addAttribute("Pessoa", new Indisponibilidade());
-        model.addAttribute("titulo", "CADASTRO DE Indisponibilidade");
+    public String form(Model model) {
+        model.addAttribute("Indisponibilidade", new Indisponibilidade());
+        model.addAttribute("titulo", "CADASTRO DE INDISPONIBILIDADES");
         model.addAttribute("link", "/cadastro");
-        model.addAttribute("valor", "Salvar");
+        model.addAttribute("valor", "Cadastrar");
         return "formulario";
     }
 
     @GetMapping("/editar/{id}")
-    public String editar(Model model, @PathVariable int id){
-        IndisponibilidadeService cs = ctx.getBean(IndisponibilidadeService.class);
-        Indisponibilidade velho = cs.buscarPorId(id);
-        model.addAttribute("Pessoa", velho);
-        model.addAttribute("titulo", "EDITAR Indisponibilidade");
+    public String editar(Model model, @PathVariable int id) {
+        IndisponibilidadeService service = ctx.getBean(IndisponibilidadeService.class);
+        Indisponibilidade antigo = service.buscarPorId(id);
+        model.addAttribute("Indisponibilidade", antigo);
+        model.addAttribute("titulo", "EDITAR INDISPONIBILIDADE");
         model.addAttribute("link", "/editar/" + id);
         model.addAttribute("valor", "Editar");
         return "formulario";
     }
 
     @PostMapping("/editar/{id}")
-    public String editar(@ModelAttribute Indisponibilidade ind, @PathVariable int id){
-        IndisponibilidadeService cs = ctx.getBean(IndisponibilidadeService.class);
-        cs.atualizar(id, ind);
+    public String editar(Model model, @ModelAttribute Indisponibilidade novo, @PathVariable int id) {
+        IndisponibilidadeService service = ctx.getBean(IndisponibilidadeService.class);
+        service.atualizar(id, novo);
         return "redirect:/listar";
     }
 
     @PostMapping("/cadastro")
-    public String cadastro(@ModelAttribute Indisponibilidade ind){
-        IndisponibilidadeService cs = ctx.getBean(IndisponibilidadeService.class);
-        cs.inserir(ind);
+    public String cadastro(Model model, @ModelAttribute Indisponibilidade novo) {
+        IndisponibilidadeService service = ctx.getBean(IndisponibilidadeService.class);
+        service.inserir(novo);
         return "redirect:/listar";
     }
 
     @GetMapping("/listar")
-    public String listar(Model model){
-        IndisponibilidadeService cs = ctx.getBean(IndisponibilidadeService.class);
-        List<Indisponibilidade> lista = cs.listarTodas();
-        model.addAttribute("Indisponibilides", lista);
+    public String listar(Model model) {
+        IndisponibilidadeService service = ctx.getBean(IndisponibilidadeService.class);
+        List<Indisponibilidade> lista = service.listarTodas();
+        model.addAttribute("indisponibilidades", lista);
         return "listar";
     }
 
     @PostMapping("/deletar/{id}")
-    public String deletar(@PathVariable int id){
-        IndisponibilidadeService cs = ctx.getBean(IndisponibilidadeService.class);
-        cs.deletar(id);
+    public String deletar(@PathVariable int id) {
+        IndisponibilidadeService service = ctx.getBean(IndisponibilidadeService.class);
+        service.deletar(id);
         return "redirect:/listar";
     }
 }
