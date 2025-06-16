@@ -20,8 +20,11 @@ public class MainController {
     ApplicationContext ctx;
 
     @GetMapping("/")
-    public String index(){
-        return "index";
+    // public String index(){
+    //     return "index";
+    // }
+    public String landing(){
+        return "landing";
     }
 
     @GetMapping("/sucesso")

@@ -1,34 +1,68 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>LISTAGEM DE PESSOAS</title>
+    <meta charset="UTF-8">
+    <title>Listar Pessoas</title>
+    <link rel="stylesheet" href="../static/style.css">
 </head>
 <body>
-    <table>
+
+<header class="header">
+    <h1 class="titulo-header">Listagem de pessoas</h1>
+</header>
+
+
+<main class="container">
+    <h2 class="titulo-principal">CRUD</h2>
+
+    <div class="search-container">
+        <input type="text" class="search-input" placeholder="Pesquisar...">
+        <button class="search-button">Buscar</button>
+    </div>
+
+    <table class="tabela">
         <thead>
             <tr>
                 <th>ID</th>
-                <th>NOME</th>
-                <th>BANDA</th>
-                <th>CANTOR</th>
-                <th>MUSICA</th>
+                <th>Nome</th>
+                <th>Banda</th>
+                <th>Cantor</th>
+                <th>Música</th>
+                <th>Ações</th>
             </tr>
         </thead>
         <tbody th:each="pes : ${pessoa}">
             <tr>
-                <td th:text="${cli.id}"></td>
+                <td th:text="${pes.id}"></td>
                 <td th:text="${pes.nome}"></td>
                 <td th:text="${pes.banda}"></td>
                 <td th:text="${pes.cantor}"></td>
                 <td th:text="${pes.musica}"></td>
-                <td><a th:href="${'/editar/' + pes.id}">Editar</a></td>
                 <td>
-                    <form th:action="${'/deletar/' + pes.id}" method="post">
-                        <input type="submit" value="Deletar">
-                    </form>
+                    <a th:href="${'/editar/' +pes.id}" class="btn btn-amarelo">Editar</a>
+                    <a th:action="${'/deletar/' + pes.id}" method="post" class="btn btn-vermelho">Excluir</a>
                 </td>
             </tr>
         </tbody>
     </table>
+
+    <div class="paginacao">
+        <!-- <a href="#" class="page-link">&laquo; Anterior</a>
+        <a href="#" class="page-link">1</a>
+        <a href="#" class="page-link">2</a>
+        <a href="#" class="page-link">Próximo &raquo;</a> -->
+    </div>
+
+    <div class="botoesCentralizados">
+        <a href="@{/formulario}" class="btn btn-verde">Cadastrar Pessoa</a>
+        <a href="@{/landing}" class="btn btn-cinza">Voltar</a>
+    </div>
+    
+</main>
+
+<footer class="footer">
+    &copy; 2025 - Projeto em Java + Spring Boot
+</footer>
+
 </body>
 </html>

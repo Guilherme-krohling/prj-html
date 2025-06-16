@@ -1,14 +1,51 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>FORMULARIO</title>
+    <meta charset="UTF-8">
+    <title>Cadastro de Pessoa</title>
+    <link rel="stylesheet" href="../static/style.css">
 </head>
 <body>
-    <h1 th:text="${titulo}"></h1>
-    <form th:action="@{${link}}" method="POST" th:object="${cliente}">
-        Nome: <input type="text" th:field="*{nome}" ><br>
-        CPF: <input type="text" th:field="*{cpf}" ><br>
-        <input type="submit" th:value="${valor}">
+
+<header class="header">
+    <h1 class="titulo-header">Cadastro de Pessoas</h1>
+</header>
+
+
+<main class="container">
+    <h2 class="titulo-principal">Formulário de Cadastro</h2>
+
+    <form id="formCadastro" method="POST" action="/salvar">
+        <div class="form-group">
+            <label class="form-label">Nome</label>
+            <input type="text" name="nome" class="form-input" required>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Banda</label>
+            <input type="text" name="banda" class="form-input" required>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Cantor</label>
+            <input type="text" name="cantor" class="form-input" required>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Música</label>
+            <input type="text" name="musica" class="form-input" required>
+        </div>
+
+        <div class="botoesCentralizados">
+            <button type="submit" class="btn btn-verde">Salvar</button>
+            <a th:href="@{/landing}" class="btn btn-cinza">Voltar</a>
+        </div>
     </form>
+</main>
+
+<footer class="footer">
+    &copy; 2025 - Projeto em Java + Spring Boot
+</footer>
+
 </body>
 </html>

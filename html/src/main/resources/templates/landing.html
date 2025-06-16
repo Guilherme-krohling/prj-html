@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Landing Page</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+
+<header class="header">
+    <h1 class="titulo-header">Projeto</h1>
+</header>
+
+
+<main class="container">
+    <h2 class="titulo-principal">Bem-vindo!</h2>
+    <p class="subtitulo">Este sistema permite cadastrar, listar e gerenciar pessoas.</p>
+    <p class="subtitulo">Escolha uma opção abaixo:</p>
+
+    <div class="botoesCentralizados">
+        <a th:href="@{/formulario}" class="btn btn-verde">Cadastrar Pessoa</a>
+        <a th:href="@{/listar}" class="btn btn-cinza">Listar Pessoas</a>
+    </div>
+</main>
+
+<footer class="footer">
+    &copy; 2025 - Projeto em Java + Spring Boot
+</footer>
+
+</body>
+</html>
