@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS indisponibilidades (
+CREATE TABLE IF NOT EXISTS indisponibilidade (
     id SERIAL PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
     motivo TEXT,
