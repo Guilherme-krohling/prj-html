@@ -25,7 +25,7 @@ public class IndisponibilidadeDAO {
     }
 
     public void inserir(Indisponibilidade ind) {
-        String sql = "INSERT INTO equipamentos (nome, motivo, responsavel, setor, observacoes, data_indisponibilidade) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO indisponibilidade (nome, motivo, responsavel, setor, observacoes, data_indisponibilidade) VALUES (?, ?, ?, ?, ?, ?)";
         Object[] parametros = {
             ind.getNome(),
             ind.getMotivo(),
@@ -38,17 +38,17 @@ public class IndisponibilidadeDAO {
     }
 
     public List<Map<String, Object>> listarTodas() {
-        String sql = "SELECT * FROM equipamentos";
+        String sql = "SELECT * FROM indisponibilidade";
         return jdbc.queryForList(sql);
     }
 
     public Map<String, Object> buscarPorId(int id) {
-        String sql = "SELECT * FROM equipamentos WHERE id = ?";
+        String sql = "SELECT * FROM indisponibilidade WHERE id = ?";
         return jdbc.queryForMap(sql, id);
     }
 
     public void atualizar(int id, Indisponibilidade nova) {
-        String sql = "UPDATE equipamentos SET nome = ?, motivo = ?, responsavel = ?, setor = ?, observacoes = ?, data_indisponibilidade = ? WHERE id = ?";
+        String sql = "UPDATE indisponibilidade SET nome = ?, motivo = ?, responsavel = ?, setor = ?, observacoes = ?, data_indisponibilidade = ? WHERE id = ?";
         Object[] parametros = {
             nova.getNome(),
             nova.getMotivo(),
@@ -62,7 +62,7 @@ public class IndisponibilidadeDAO {
     }
 
     public void deletar(int id) {
-        String sql = "DELETE FROM equipamentos WHERE id = ?";
+        String sql = "DELETE FROM indisponibilidade WHERE id = ?";
         jdbc.update(sql, id);
     }
 }
