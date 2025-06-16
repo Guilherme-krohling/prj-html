@@ -2,13 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Listar Pessoas</title>
+    <title>Listagem</title>
     <link rel="stylesheet" href="../static/style.css">
 </head>
 <body>
 
 <header class="header">
-    <h1 class="titulo-header">Listagem de pessoas</h1>
+    <h1 class="titulo-header">Listagem de indisponibilidades</h1>
 </header>
 
 
@@ -25,22 +25,26 @@
             <tr>
                 <th>ID</th>
                 <th>Nome</th>
-                <th>Banda</th>
-                <th>Cantor</th>
-                <th>Música</th>
-                <th>Ações</th>
+                <th>Motivo</th>
+                <th>Responsável</th>
+                <th>Setor</th>
+                <th>Observações</th>
+                <th>Data de Indisponibilidade</th>
+                <th>Data de Indisponibilidade</th>
             </tr>
         </thead>
-        <tbody th:each="pes : ${pessoa}">
+        <tbody th:each="ind : ${indisponibilidade}">
             <tr>
-                <td th:text="${pes.id}"></td>
-                <td th:text="${pes.nome}"></td>
-                <td th:text="${pes.banda}"></td>
-                <td th:text="${pes.cantor}"></td>
-                <td th:text="${pes.musica}"></td>
+                <td th:text="${ind.id}"></td>
+                <td th:text="${ind.nome}"></td>
+                <td th:text="${ind.motivo}"></td>
+                <td th:text="${ind.responsavel}"></td>
+                <td th:text="${ind.setor}"></td>
+                <td th:text="${ind.observacoes}"></td>
+                <td th:text="${ind.data_indisponibilidade}"></td>
                 <td>
-                    <a th:href="${'/editar/' +pes.id}" class="btn btn-amarelo">Editar</a>
-                    <a th:action="${'/deletar/' + pes.id}" method="post" class="btn btn-vermelho">Excluir</a>
+                    <a th:href="${'/editar/' +ind.id}" class="btn btn-amarelo">Editar</a>
+                    <a th:action="${'/deletar/' + ind.id}" method="post" class="btn btn-vermelho">Excluir</a>
                 </td>
             </tr>
         </tbody>

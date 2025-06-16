@@ -1,7 +1,13 @@
-CREATE TABLE IF NOT EXISTS pessoa (
-    id serial PRIMARY KEY,
-    nome varchar(50),
-    banda varchar(50),
-    cantor varchar(50),
-    musica varchar(50)
+CREATE DATABASE equipamentos;
+
+\c equipamentos;
+
+CREATE TABLE indisponibilidades (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    motivo TEXT,
+    responsavel VARCHAR(100),
+    setor VARCHAR(100),
+    observacoes TEXT,
+    data_indisponibilidade DATE
 );
