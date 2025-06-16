@@ -6,7 +6,7 @@ spring:
         platform: postgres
         url: jdbc:postgresql://localhost:5432/equipamentos
         username: postgres
-        password: root
+        password: admin
         driverClassName: org.postgresql.Driver
         initialize: true
 
