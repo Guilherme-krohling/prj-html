@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.prj.html.model.Pessoa;
-import com.prj.html.model.PessoaService;
+import com.prj.html.model.Indisponibilidade;
+import com.prj.html.model.IndisponibilidadeService;
 
 @Controller
 public class MainController {
@@ -20,66 +20,56 @@ public class MainController {
     ApplicationContext ctx;
 
     @GetMapping("/")
-    // public String index(){
-    //     return "index";
-    // }
     public String landing(){
         return "landing";
     }
 
-    @GetMapping("/sucesso")
-    public String sucesso(){
-        return "sucesso";
-    }
 
     @GetMapping("/formulario")
     public String form(Model model){
-        //QUERO UM Pessoa VAZIO NA INICIALIZACAO DO FORM
-        model.addAttribute("Pessoa", new Pessoa());
-        model.addAttribute("titulo", "CADASTRO DE PessoaS");
+        model.addAttribute("Pessoa", new Indisponibilidade());
+        model.addAttribute("titulo", "CADASTRO DE Indisponibilidade");
         model.addAttribute("link", "/cadastro");
-        model.addAttribute("valor", "Cadastrar");
+        model.addAttribute("valor", "Salvar");
         return "formulario";
     }
 
     @GetMapping("/editar/{id}")
     public String editar(Model model, @PathVariable int id){
-        PessoaService cs = ctx.getBean(PessoaService.class);
-        Pessoa velho = cs.puxarPessoa(id);
+        IndisponibilidadeService cs = ctx.getBean(IndisponibilidadeService.class);
+        Indisponibilidade velho = cs.buscarPorId(id);
         model.addAttribute("Pessoa", velho);
-        model.addAttribute("titulo", "EDITAR PessoaS");
+        model.addAttribute("titulo", "EDITAR Indisponibilidade");
         model.addAttribute("link", "/editar/" + id);
         model.addAttribute("valor", "Editar");
         return "formulario";
     }
 
     @PostMapping("/editar/{id}")
-    public String editar(Model model, 
-                         @ModelAttribute Pessoa cli, 
-                         @PathVariable int id){
-        PessoaService cs = ctx.getBean(PessoaService.class);
-        cs.atualizarPessoa(id, cli);
+    public String editar(@ModelAttribute Indisponibilidade ind, @PathVariable int id){
+        IndisponibilidadeService cs = ctx.getBean(IndisponibilidadeService.class);
+        cs.atualizar(id, ind);
         return "redirect:/listar";
     }
 
     @PostMapping("/cadastro")
-    public String cadastro(Model model, @ModelAttribute Pessoa cli){
-        PessoaService cs = ctx.getBean(PessoaService.class);
-        cs.inserirPessoa(cli);
-        return "redirect:listar";
+    public String cadastro(@ModelAttribute Indisponibilidade ind){
+        IndisponibilidadeService cs = ctx.getBean(IndisponibilidadeService.class);
+        cs.inserir(ind);
+        return "redirect:/listar";
     }
 
     @GetMapping("/listar")
     public String listar(Model model){
-        PessoaService cs = ctx.getBean(PessoaService.class);
-        List<Pessoa> lista = cs.puxarTodasPessoas();
-        model.addAttribute("Pessoas", lista);
+        IndisponibilidadeService cs = ctx.getBean(IndisponibilidadeService.class);
+        List<Indisponibilidade> lista = cs.listarTodas();
+        model.addAttribute("Indisponibilides", lista);
         return "listar";
     }
 
     @PostMapping("/deletar/{id}")
     public String deletar(@PathVariable int id){
-        PessoaService cs = ctx.getBean(PessoaService.class);
+        IndisponibilidadeService cs = ctx.getBean(IndisponibilidadeService.class);
         cs.deletar(id);
         return "redirect:/listar";
     }
