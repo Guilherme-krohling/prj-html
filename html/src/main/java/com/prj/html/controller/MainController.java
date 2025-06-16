@@ -25,11 +25,6 @@ public class MainController {
         return "landing";
     }
 
-    @GetMapping("/sucesso")
-    public String sucesso() {
-        return "sucesso";
-    }
-
     @GetMapping("/formulario")
     public String form(Model model) {
         model.addAttribute("Indisponibilidade", new Indisponibilidade());

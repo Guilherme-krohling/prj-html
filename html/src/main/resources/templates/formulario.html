@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Cadastro de Pessoa</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" th:href="@{/style.css}">
 </head>
 <body>
 
@@ -15,7 +15,7 @@
 <main class="container">
     <h2 class="titulo-principal">Formulário de Cadastro</h2>
 
-    <form id="formCadastro" method="POST" action="/salvar">
+    <form id="formCadastro" method="POST" action="/editar/{id}">
         <div class="form-group">
             <label class="form-label">Nome</label>
             <input type="text" name="nome" class="form-input" required>
@@ -50,7 +50,7 @@
 
         <div class="botoesCentralizados">
             <button type="submit" class="btn btn-verde">Salvar</button>
-            <a th:href="@{/landing}" class="btn btn-cinza">Voltar</a>
+            <a th:href="@{/}" class="btn btn-cinza">Voltar</a>
         </div>
     </form>
 </main>
