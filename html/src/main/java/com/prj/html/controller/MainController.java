@@ -20,14 +20,14 @@ public class MainController {
     @Autowired
     ApplicationContext ctx;
 
-    @GetMapping("/")
+    @GetMapping("/landing")
     public String landing() {
         return "landing";
     }
 
     @GetMapping("/formulario")
     public String form(Model model) {
-        model.addAttribute("Indisponibilidade", new Indisponibilidade());
+        model.addAttribute("indisponibilidade", new Indisponibilidade());
         model.addAttribute("titulo", "CADASTRO DE INDISPONIBILIDADES");
         model.addAttribute("link", "/cadastro");
         model.addAttribute("valor", "Cadastrar");

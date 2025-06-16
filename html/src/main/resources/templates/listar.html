@@ -30,10 +30,10 @@
                 <th>Setor</th>
                 <th>Observações</th>
                 <th>Data de Indisponibilidade</th>
-                <th>Data de Indisponibilidade</th>
+                <th>Ação</th>
             </tr>
         </thead>
-        <tbody th:each="ind : ${indisponibilidade}">
+        <tbody th:each="ind : ${indisponibilidades}">
             <tr>
                 <td th:text="${ind.id}"></td>
                 <td th:text="${ind.nome}"></td>

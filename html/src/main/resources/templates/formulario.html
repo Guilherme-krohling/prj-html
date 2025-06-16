@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Cadastro de Pessoa</title>
-    <link rel="stylesheet" href="/css/style.css">
+      <link rel="stylesheet" th:href="@{/style.css}">
 </head>
 <body>
 
@@ -37,7 +37,7 @@
 
         <div class="form-group">
             <label class="form-label">Data de Indisponibilidade</label>
-            <input type="date" nth:field="*{data_indisponibilidade}" class="form-input" required>
+            <input type="date" th:field="*{data_indisponibilidade}" class="form-input" required>
         </div>
 
         <div class="form-group">
