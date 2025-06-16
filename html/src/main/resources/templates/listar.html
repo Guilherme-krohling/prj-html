@@ -41,11 +41,14 @@
                 <td th:text="${ind.responsavel}"></td>
                 <td th:text="${ind.setor}"></td>
                 <td th:text="${ind.observacoes}"></td>
-                <td th:text="${ind.data_indisponibilidade}"></td>
-                <td>
-                    <a th:href="${'/editar/' +ind.id}" class="btn btn-amarelo">Editar</a>
-                    <a th:action="${'/deletar/' + ind.id}" method="post" class="btn btn-vermelho">Excluir</a>
-                </td>
+                <td th:text="${#dates.format(ind.data_indisponibilidade, 'dd/MM/yyyy')}"></td>
+        <td>
+            <a th:href="@{/editar/{id}(id=${ind.id})}" class="btn btn-amarelo">Editar</a>
+
+            <form th:action="@{/deletar/{id}(id=${ind.id})}" method="post" style="display: inline;">
+                <button type="submit" class="btn btn-vermelho">Excluir</button>
+            </form>
+        </td>
             </tr>
         </tbody>
     </table>
