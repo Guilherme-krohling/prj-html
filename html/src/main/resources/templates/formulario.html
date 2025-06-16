@@ -2,55 +2,52 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Cadastro de Pessoa</title>
+    <title>Cadastro</title>
     <link rel="stylesheet" th:href="@{/style.css}">
 </head>
 <body>
 
 <header class="header">
-    <h1 class="titulo-header">Cadastro de Indisponibilidade</h1>
+    <h1 class="titulo-header" th:text="${titulo}">Cadastro de Indisponibilidade</h1>
 </header>
-
 
 <main class="container">
     <h2 class="titulo-principal">Formulário de Cadastro</h2>
 
-    <form id="formCadastro" method="POST" action="/editar/{id}">
+    <form id="formCadastro" method="POST" th:action="@{${link}}" th:object="${indisponibilidade}">
         <div class="form-group">
             <label class="form-label">Nome</label>
-            <input type="text" name="nome" class="form-input" required>
+            <input type="text" th:field="*{nome}" class="form-input" required>
         </div>
 
         <div class="form-group">
             <label class="form-label">Motivo</label>
-            <input type="text" name="motivo" class="form-input" required>
+            <input type="text" th:field="*{motivo}" class="form-input" required>
         </div>
 
         <div class="form-group">
             <label class="form-label">Responsável</label>
-            <input type="text" name="responsavel" class="form-input" required>
+            <input type="text" th:field="*{responsavel}" class="form-input" required>
         </div>
 
         <div class="form-group">
             <label class="form-label">Setor</label>
-            <input type="text" name="setor" class="form-input" required>
+            <input type="text" th:field="*{setor}" class="form-input" required>
         </div>
 
-          <div class="form-group">
+        <div class="form-group">
             <label class="form-label">Data de Indisponibilidade</label>
-            <input type="date" name="data_indisponibilidade" class="form-input" required>
+            <input type="date" th:field="*{dataIndisponibilidade}" class="form-input" required>
         </div>
 
-
-          <div class="form-group">
+        <div class="form-group">
             <label class="form-label">Observação</label>
-            <input type="text" name="observacao" class="form-input" required>
+            <input type="text" th:field="*{observacoes}" class="form-input" required>
         </div>
-
 
         <div class="botoesCentralizados">
-            <button type="submit" class="btn btn-verde">Salvar</button>
-            <a th:href="@{/}" class="btn btn-cinza">Voltar</a>
+            <button type="submit" class="btn btn-verde" th:text="${valor}">Salvar</button>
+            <a th:href="@{/landing}" class="btn btn-cinza">Voltar</a>
         </div>
     </form>
 </main>
