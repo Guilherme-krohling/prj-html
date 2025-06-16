@@ -46,6 +46,7 @@
         </div>
 
         <div class="botoesCentralizados">
+            <button type="submit" class="btn btn-verde" th:text="${valor} ?: 'Salvar'">Salvar</button>
             <button type="submit" class="btn btn-verde" th:text="${valor}">Salvar</button>
             <a th:href="@{/formulario}" class="btn btn-verde">Cadastrar</a>
             <a th:href="@{/landing}" class="btn btn-cinza">Voltar</a>
